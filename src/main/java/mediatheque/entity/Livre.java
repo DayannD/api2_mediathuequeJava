@@ -35,6 +35,8 @@ public class Livre {
 
     private String auteur;
 
+    private int numberExamp;
+
 
 
 }
