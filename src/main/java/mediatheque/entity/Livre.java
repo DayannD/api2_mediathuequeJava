@@ -35,6 +35,10 @@ public class Livre {
 
     private String auteur;
 
+    private int numberExamp;
 
+    public boolean getDispo(){
+        return this.dispo;
+    }
 
 }
