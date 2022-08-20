@@ -37,6 +37,8 @@ public class Livre {
 
     private int numberExamp;
 
-
+    public boolean getDispo(){
+        return this.dispo;
+    }
 
 }

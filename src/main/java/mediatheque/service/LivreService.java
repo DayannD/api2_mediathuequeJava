@@ -30,12 +30,16 @@ public class LivreService {
 
     public Livre deleteOneBook(Livre livre) throws Exception {
         if(livre.getNumberExamp() == 0){
+            livre.setDispo(false);
             throw new Exception("Il n'y a plus d'exemplaire de ce livre");
         }
         return repository.save(livre);
     }
 
     public Livre addOneBook(Livre livre){
+        if (livre.getDispo() == false){
+            livre.setDispo(true);
+        }
         return repository.save(livre);
     }
 }
