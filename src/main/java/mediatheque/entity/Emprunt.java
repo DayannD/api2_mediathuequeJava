@@ -1,20 +1,19 @@
 package mediatheque.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
 
-@Getter @Setter @NoArgsConstructor @Entity
+@Getter @Setter @NoArgsConstructor @Entity @AllArgsConstructor @Builder
 public class Emprunt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    private Date date_emprunt;
 
     @ManyToOne
     @JoinColumn(name = "email_id")
@@ -26,9 +25,11 @@ public class Emprunt {
 
     private boolean isLoan = false;
 
-    private Date renderingAt;
+    @Column(nullable = true)
+    private LocalDate renderingAt;
 
-    private Date loanAt;
+    @CreatedDate()
+    private Instant loanAt;
 
-    private boolean isRendering;
+    private boolean isRendering = false;
 }

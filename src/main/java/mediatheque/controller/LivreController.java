@@ -1,6 +1,9 @@
 package mediatheque.controller;
 
+import mediatheque.entity.Emprunt;
 import mediatheque.entity.Livre;
+import mediatheque.entity.User;
+import mediatheque.service.EmpruntService;
 import mediatheque.service.LivreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,9 @@ public class LivreController {
     @Autowired
     private LivreService service;
 
+    @Autowired
+    private EmpruntService empruntService;
+
     @GetMapping("/")
     public List<Livre> getAll(){
         return service.getAll();
@@ -26,10 +32,10 @@ public class LivreController {
     // TODO: 16/08/2022 A faire la méthode search 
 
 
-    @PutMapping("/delete/{id}")
-    public Livre deleteOneBook(@PathVariable int id) throws Exception {
+    @PutMapping("/emprunt/{id}/{userid}")
+    public Livre empruntOneBook(@PathVariable int id,@PathVariable int userid) throws Exception {
         Livre livre = service.getOneById(id);
         livre.setNumberExamp(livre.getNumberExamp()-1);
-        return service.deleteOneBook(livre);
+        return empruntService.create(livre);
     }
 }
