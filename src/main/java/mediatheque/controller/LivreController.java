@@ -10,9 +10,7 @@ import java.util.Optional;
 
 @RestController
 public class LivreController {
-
-    boolean submitted = false;
-    // TODO: search,deleteOneBook,addOneBook,getAll,getOneById,
+    // TODO: search,deleteOneBook,getAll,getOneById,
     @Autowired
     private LivreService service;
 
@@ -26,13 +24,7 @@ public class LivreController {
         return service.getOneById(id);
     }
     // TODO: 16/08/2022 A faire la méthode search 
-/*    @GetMapping("/search")
-    public Optional<List<Livre>> search(@RequestBody Livre livre){
-        if (!submitted){
-            
-        }
-        return service.search(livre);
-    }*/
+
 
     @PutMapping("/delete/{id}")
     public Livre deleteOneBook(@PathVariable int id) throws Exception {
@@ -40,13 +32,4 @@ public class LivreController {
         livre.setNumberExamp(livre.getNumberExamp()-1);
         return service.deleteOneBook(livre);
     }
-
-    @PutMapping("/add/{id}")
-    public Livre addOneBook(@PathVariable int id){
-        Livre livre = service.getOneById(id);
-        livre.setNumberExamp(livre.getNumberExamp()+1);
-        return service.addOneBook(livre);
-    }
-
-
 }
