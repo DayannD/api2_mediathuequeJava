@@ -12,34 +12,29 @@ import java.util.Optional;
 public class LivreService {
 
     @Autowired
-    private LivreRepository repository;
+    private LivreRepository livreRepository;
 
     public List<Livre> getAll(){
-        return repository.findAll();
+
+        return livreRepository.findAll();
     }
 
     public Livre getOneById(int id){
-        return repository.findById(id).get();
+        return livreRepository.findById(id).get();
     }
-
-/*
-    public Optional<List<Livre>> search(Livre livre){
-        return Optional.of((List<Livre>) repository.findAll().stream().filter(i -> i == livre));
-    }
-*/
 
     public Livre deleteOneBook(Livre livre) throws Exception {
         if(livre.getNumberExamp() == 0){
             livre.setDispo(false);
             throw new Exception("Il n'y a plus d'exemplaire de ce livre");
         }
-        return repository.save(livre);
+        return livreRepository.save(livre);
     }
 
     public Livre addOneBook(Livre livre){
-        if (livre.getDispo() == false){
+        if (livre.isDispo() == false){
             livre.setDispo(true);
         }
-        return repository.save(livre);
+        return livreRepository.save(livre);
     }
 }

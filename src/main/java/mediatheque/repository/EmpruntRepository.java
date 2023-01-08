@@ -11,5 +11,5 @@ import java.util.List;
 public interface EmpruntRepository extends JpaRepository<Emprunt, Integer> {
 
     List<Emprunt> findAllByEmail(int id);
-    Emprunt findByEmailAndName_livre(int id, Livre livre);
+    //Emprunt findByEmailAndName_livre(int id, Livre livre);
 }

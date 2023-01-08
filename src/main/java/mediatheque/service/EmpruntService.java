@@ -42,8 +42,8 @@ public class EmpruntService {
         return empruntRepository.findAllByEmail(id);
     }
 
-    public void rendering(Livre livre,User user){
-        Emprunt emprunt = empruntRepository
+   public void rendering(Livre livre,User user){
+/*        Emprunt emprunt = empruntRepository
                                 .findByEmailAndName_livre(
                                         user.getId(),livre
                                         );
@@ -53,6 +53,6 @@ public class EmpruntService {
         emprunt.setLoan(false);
         // TODO: 07/01/2023 à modifier avec une table nomber livre
         livre.setNumberExamp(livre.getNumberExamp() + 1);
-        empruntRepository.save(emprunt);
+        empruntRepository.save(emprunt);*/
     }
 }

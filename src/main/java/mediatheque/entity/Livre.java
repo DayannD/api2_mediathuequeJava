@@ -1,8 +1,6 @@
 package mediatheque.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +9,7 @@ import javax.persistence.Id;
 import java.io.File;
 import java.util.Date;
 
-@Getter @Setter @NoArgsConstructor
-@Entity
+@Getter @Setter @NoArgsConstructor @Entity @AllArgsConstructor
 public class Livre {
 
     @Id
@@ -36,9 +33,4 @@ public class Livre {
     private String auteur;
 
     private int numberExamp;
-
-    public boolean getDispo(){
-        return this.dispo;
-    }
-
 }
